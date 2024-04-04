@@ -1,0 +1,32 @@
+Table users{
+    id int [primary key]
+    email varchar
+    password varchar
+    role varchar
+    timestamp timestamp
+}
+
+Table blood_bank{
+  id int
+  name varchar
+  city varchar
+  state varchar
+  country varchar
+  contact_no int
+}
+
+Table quantity{
+  id int
+  A_positive int
+  A_nagative int
+  B_positive int
+  B_nagative int
+  O_positive int
+  O_nagative int
+  AB_positive int
+  AB_nagative int
+}
+
+Ref: "users"."id" < "blood_bank"."id"
+
+Ref: "blood_bank"."id" < "quantity"."id"
