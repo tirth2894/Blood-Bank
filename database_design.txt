@@ -9,14 +9,11 @@ Table users{
 Table blood_bank{
   id int
   name varchar
+  area varchar
   city varchar
   state varchar
   country varchar
   contact_no int
-}
-
-Table quantity{
-  id int
   A_positive int
   A_nagative int
   B_positive int
@@ -28,5 +25,3 @@ Table quantity{
 }
 
 Ref: "users"."id" < "blood_bank"."id"
-
-Ref: "blood_bank"."id" < "quantity"."id"
