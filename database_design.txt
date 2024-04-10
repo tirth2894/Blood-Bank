@@ -1,5 +1,6 @@
-Table users{
+Table login{
     id int [primary key]
+    name varchar
     email varchar
     password varchar
     role varchar
@@ -9,7 +10,6 @@ Table users{
 Table blood_bank{
   id int
   name varchar
-  area varchar
   city varchar
   state varchar
   country varchar
@@ -24,4 +24,5 @@ Table blood_bank{
   AB_nagative int
 }
 
-Ref: "users"."id" < "blood_bank"."id"
+Ref: "login"."id" < "blood_bank"."id"
+

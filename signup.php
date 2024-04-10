@@ -19,6 +19,11 @@
             <form action="#" method="POST">
                 <!-- Username Input -->
                 <div class="mb-4">
+                    <label for="userName" class="block text-gray-600">Name</label>
+                    <input type="text" id="userName" name="userName" class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-red-600" autocomplete="off">
+                </div>
+                <!-- Email Input -->
+                <div class="mb-4">
                     <label for="userEmail" class="block text-gray-600">Email</label>
                     <input type="email" id="userEmail" name="userEmail" class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-red-600" autocomplete="off">
                 </div>

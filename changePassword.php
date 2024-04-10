@@ -11,7 +11,7 @@
 <body>
     <?php
         // Navbar
-        require_once("components/navbar.php");        
+        require_once("navbar.php");        
     ?>
 
     <!-- Form -->
@@ -42,7 +42,7 @@
     
     <?php
         // Footer
-        require_once("components/footer.php")
+        require_once("footer.php")
     ?>
 </body>
 
