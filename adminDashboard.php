@@ -47,7 +47,7 @@
                                         </path>
                                     </svg>
                                 </span>
-                                <span class="ml-2 text-sm tracking-wide truncate">Pending Requests</span>
+                                <span class="ml-2 text-sm tracking-wide truncate">Blood Banks</span>
                             </a>
                         </li>
                         <li>
@@ -64,28 +64,13 @@
                                 <span class="ml-2 text-sm tracking-wide truncate">Contributors</span>
                             </a>
                         </li>
-                        <li>
-                            <a href="#"
-                                class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-red-500 focus:bg-red-500  text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-red-300 focus:border-red-300  pr-6">
-                                <span class="inline-flex justify-center items-center ml-4">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9">
-                                        </path>
-                                    </svg>
-                                </span>
-                                <span class="ml-2 text-sm tracking-wide truncate">Blood Banks</span>
-                            </a>
-                        </li>
                     </ul>
                 </div>
             </div>
 
             <div class="h-full ml-14 mb-10 md:ml-64">
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 p-4 gap-2">
-                    <div
-                        class="bg-red-500 shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-red-700 text-white font-medium group">
+                <div class="grid grid-cols-1 sm:grid-cols-2 p-4 gap-2">
+                    <div class="bg-red-500 shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-red-700 text-white font-medium group">
                         <div
                             class="flex justify-center items-center w-14 h-14 bg-white rounded-full transition-all duration-300 transform group-hover:rotate-12">
                             <svg width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="currentColor"
@@ -97,11 +82,10 @@
                         </div>
                         <div class="text-right">
                             <p class="text-2xl">1,257</p>
-                            <p>Donors</p>
+                            <p>Contributors</p>
                         </div>
                     </div>
-                    <div
-                        class="bg-red-500 shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-red-700 text-white font-medium group">
+                    <div class="bg-red-500 shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-red-700 text-white font-medium group">
                         <div
                             class="flex justify-center items-center w-14 h-14 bg-white rounded-full transition-all duration-300 transform group-hover:rotate-12">
                             <svg width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="currentColor"
@@ -113,21 +97,6 @@
                         </div>
                         <div class="text-right">
                             <p class="text-2xl">1,257</p>
-                            <p>Recievers</p>
-                        </div>
-                    </div>
-                    <div
-                        class="bg-red-500  shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-red-700  text-white font-medium group">
-                        <div
-                            class="flex justify-center items-center w-14 h-14 bg-white rounded-full transition-all duration-300 transform group-hover:rotate-12">
-                            <svg width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                                class="stroke-current text-red-600  transform transition-transform duration-500 ease-in-out">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
-                            </svg>
-                        </div>
-                        <div class="text-right">
-                            <p class="text-2xl">557</p>
                             <p>Blood Banks</p>
                         </div>
                     </div>
@@ -709,59 +678,7 @@
                     </div>
                 </div> -->
 
-                <!-- REQUEST PENDINDS -->
-                <div class="mt-4 mx-4">
-                    <h2 class="font-semibold my-5 text-secondary-dark text-red-600 text-xl">Requests Pending</h2>
-                    <div class="w-full overflow-hidden rounded-lg shadow-xs">
-                        <div class="w-full overflow-x-auto">
-                            <table class="w-full">
-                                <thead>
-                                    <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50  ">
-                                        <th class="px-4 py-3">Name</th>
-                                        <th class="px-4 py-3">Location</th>
-                                        <th class="px-4 py-3">Contact No</th>
-                                        <th class="px-4 py-3">Date</th>
-                                        <th class="px-4 py-3">Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="bg-white divide-y dark:divide-gray-700 ">
-                                    <tr class="bg-gray-50 hover:bg-gray-100 text-gray-700 ">
-                                        <td class="px-4 py-3">
-                                            <div class="flex items-center text-sm">
-                                                <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                                                    <img class="object-cover w-full h-full rounded-full"
-                                                        src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=200&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
-                                                        alt="" loading="lazy" />
-                                                </div>
-                                                <div>
-                                                    <p class="font-semibold">Tirth Patel</p>
-                                                    <p class="text-xs text-gray-600 w-20">Blood Bank</p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="px-4 py-3 text-sm">Ahmedabad, Gujarat</td>
-                                        <td class="px-4 py-3 text-sm">9924062681</td>
-                                        <td class="px-4 py-3 text-sm">15-01-2021</td>
-                                        <td class="px-4 py-3 text-xs">
-                                            <button
-                                                class="rounded-lg bg-red-500 w-20 my-0.5 text-center focus:bg-red-600 hover:bg-red-600 py-2 font-sans text-sm font-bold text-white "
-                                                data-ripple-light="true">
-                                                <a href="#">Reject</a>
-                                            </button>
-                                            <button
-                                                class="rounded-lg bg-red-500 w-20 my-0.5 text-center focus:bg-red-600 hover:bg-red-600 py-2 font-sans text-sm font-bold text-white "
-                                                data-ripple-light="true">
-                                                <a href="#">Accept</a>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- DONORS / RECIEVERS -->
+                <!-- Contributors -->
                 <div class="mt-4 mx-4">
                     <h2 class="font-semibold my-5 text-secondary-dark text-red-600 text-xl">Contributors</h2>
                     <div class="w-full overflow-hidden rounded-lg shadow-xs">

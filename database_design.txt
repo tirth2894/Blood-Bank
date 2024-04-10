@@ -9,7 +9,6 @@ Table login{
 
 Table blood_bank{
   id int
-  name varchar
   city varchar
   state varchar
   country varchar

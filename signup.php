@@ -14,7 +14,7 @@
             <img src="images/background.png" alt="Placeholder Image" class="object-cover w-full h-full">
         </div>
         <!-- Right: Login Form -->
-        <div class="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2">
+        <div class="lg:px-36 md:px-52 sm:px-20 p-8 w-full lg:w-1/2">
             <h1 class="text-2xl font-semibold mb-4 text-red-600">Sign up</h1>
             <form action="#" method="POST">
                 <!-- Username Input -->
