@@ -1,4 +1,4 @@
-Table login{
+Table user{
     id int [primary key]
     name varchar
     email varchar

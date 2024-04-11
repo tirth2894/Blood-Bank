@@ -9,6 +9,12 @@
 </head>
 
 <body>
+    <?php
+        require_once("connection.php");
+    ?>
+
+
+
     <!-- component -->
     <div class="bg-gray-100 flex justify-center items-center h-screen">
         <!-- Left: Image -->
