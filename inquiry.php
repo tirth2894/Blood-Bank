@@ -10,29 +10,76 @@
 
 <body>
     <?php
-        // Navbar
-        require_once("navbar.php");        
+        
+        if(isset($_REQUEST["req"]))
+        {
+            // Navbar
+            require_once("navbar.php");  
+            require_once("connection.php");
+
+            $req = $_REQUEST["req"];
+            $cityErrMsg = "";
+            $stateErrMsg = "";
+            $countryErrMsg = "";
+            $valid = false;
+
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                $valid = true;
+                if(isset($_POST["bloodGroup"]) && isset($_POST["city"]) && isset($_POST["state"]) && isset($_POST["country"]))
+                {
+                    $pattern = "/^^[A-Za-z]+$/i";
+                    
+                    $blood = $_POST["bloodGroup"];
+                    $city = $_POST["city"];
+                    $state = $_POST["state"];
+                    $country = $_POST["country"];
+
+                    if(strlen($city) < 1 || !(preg_match($pattern,$city)))
+                    {
+                        $cityErrMsg = "Invalid city";
+                        $valid = false;
+                    } 
+
+                    if(strlen($state) < 1 || !(preg_match($pattern,$state)))
+                    {
+                        $stateErrMsg = "Invalid state";
+                        $valid = false;
+                    }
+
+                    if(strlen($country) < 1 || !(preg_match($pattern,$country)))
+                    {
+                        $countryErrMsg = "Invalid country";
+                        $valid = false;
+                    }
+                }
+            }
+        }
+        else
+        {
+            header("Location: index.php");
+        }
+
     ?>
 
     <div class="bg-gray-100 flex justify-center items-center">
         <!-- Form -->
         <div class="sm:px-20 md:w-5/6 p-8 w-full lg:w-1/2">
             <h1 class="text-2xl font-semibold mb-4 text-red-600">Donate Blood</h1>
-            <form action="#" method="POST">
+            <form action="inquiry.php?req=<?php echo $req?>" method="POST">
                 <!-- Username Input -->
                 <div class="mb-4">
                     <label for="bloodGroup" class="block text-gray-600">Blood Group</label>
                     <select id="bloodGroup" name="bloodGroup"
                         class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-red-600"
                         autocomplete="off">
-                        <option value="A+">A+</option>
-                        <option value="A-">A-</option>
-                        <option value="B+">B+</option>
-                        <option value="B-">B-</option>
-                        <option value="O+">O+</option>
-                        <option value="O-">O-</option>
-                        <option value="AB+">AB+</option>
-                        <option value="AB-">AB-</option>
+                        <option value="A_positive">A+</option>
+                        <option value="A_nagative">A-</option>
+                        <option value="B_positive">B+</option>
+                        <option value="B_nagative">B-</option>
+                        <option value="O_positive">O+</option>
+                        <option value="O_nagative">O-</option>
+                        <option value="AB_positive">AB+</option>
+                        <option value="AB_nagative">AB-</option>
                     </select>
                 </div>
 
@@ -41,6 +88,9 @@
                     <input type="text" id="city" name="city"
                         class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-red-600"
                         autocomplete="off">
+                    <span class="text-red-600 text-sm">
+                        <?php echo $cityErrMsg; ?>
+                    </span>
                 </div>
 
                 <div class="mb-4">
@@ -48,6 +98,9 @@
                     <input type="text" id="state" name="state"
                         class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-red-600"
                         autocomplete="off">
+                    <span class="text-red-600 text-sm">
+                        <?php echo $stateErrMsg; ?>
+                    </span>
                 </div>
 
                 <div class="mb-4">
@@ -55,6 +108,9 @@
                     <input type="text" id="country" name="country"
                         class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-red-600"
                         autocomplete="off">
+                    <span class="text-red-600 text-sm">
+                        <?php echo $countryErrMsg; ?>
+                    </span>
                 </div>
 
                 <!-- Submit Button -->
@@ -77,10 +133,71 @@
                             <th class="px-4 py-3">City</th>
                             <th class="px-4 py-3">State</th>
                             <th class="px-4 py-3">Contact no</th>
+                            <th class="px-4 py-3">Email</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y dark:divide-gray-700 ">
-                        <tr class="bg-gray-50 hover:bg-gray-100 text-gray-700 ">
+                        
+                    <?php
+                        
+                        if($req == "wantsToDonate" && $valid)
+                        {
+                            $sql = "SELECT * FROM user,banks WHERE user.Id=banks.Id AND City='$city' AND State='$state' AND Country='$country' ORDER BY $blood ";
+                            $result = mysqli_query($connection,$sql);
+
+                            while ($row = mysqli_fetch_assoc($result)) {
+                               echo '<tr class="bg-gray-50 hover:bg-gray-100 text-gray-700 ">
+                                    <td class="px-4 py-3">
+                                        <div class="flex items-center text-sm">
+                                            <div class="relative w-8 h-8 mr-3 rounded-full">
+                                                <img class="object-cover w-full h-full rounded-full"
+                                                    src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=200&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
+                                                    alt="" loading="lazy" />
+                                            </div>
+                                            <div>
+                                                <p class="font-semibold">'.$row["Name"].'</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 text-sm">'.$row["City"].'</td>
+                                    <td class="px-4 py-3 text-sm">'.$row["State"].'</td>
+                                    <td class="px-4 py-3 text-sm">'.$row["Contact No"].'</td>
+                                    <td class="px-4 py-3 text-sm">'.$row["Email"].'</td>   
+                                </tr>';
+                            }
+                        }
+                        else if($req == "lookingForBlood" && $valid)
+                        {
+                            $sql = "SELECT * FROM user,banks WHERE user.Id=banks.Id AND City='$city' AND State='$state' AND Country='$country' ORDER BY $blood DESC";
+                            $result = mysqli_query($connection,$sql);
+
+                            while ($row = mysqli_fetch_assoc($result)) {
+                               echo '<tr class="bg-gray-50 hover:bg-gray-100 text-gray-700 ">
+                                    <td class="px-4 py-3">
+                                        <div class="flex items-center text-sm">
+                                            <div class="relative w-8 h-8 mr-3 rounded-full">
+                                                <img class="object-cover w-full h-full rounded-full"
+                                                    src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=200&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
+                                                    alt="" loading="lazy" />
+                                            </div>
+                                            <div>
+                                                <p class="font-semibold">'.$row["Name"].'</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 text-sm">'.$row["City"].'</td>
+                                    <td class="px-4 py-3 text-sm">'.$row["State"].'</td>
+                                    <td class="px-4 py-3 text-sm">'.$row["Contact No"].'</td>   
+                                    <td class="px-4 py-3 text-sm">'.$row["Email"].'</td>   
+                                </tr>';
+                            }         
+                        }
+
+                        
+                    ?>
+                    
+                    
+                    <!-- <tr class="bg-gray-50 hover:bg-gray-100 text-gray-700 ">
                             <td class="px-4 py-3">
                                 <div class="flex items-center text-sm">
                                     <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
@@ -96,7 +213,7 @@
                             <td class="px-4 py-3 text-sm">Ahmedabad</td>
                             <td class="px-4 py-3 text-sm">Gujarat</td>
                             <td class="px-4 py-3 text-sm">9924062681</td>   
-                        </tr>
+                    </tr> -->
                         
                     </tbody>
                 </table>

@@ -1,3 +1,11 @@
+<?php
+    session_start();
+
+    if (!(isset($_SESSION["name"]) && isset($_SESSION["email"]) && isset($_SESSION["role"]))) {
+        header("Location: login.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
