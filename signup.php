@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,6 +70,7 @@
                     if(mysqli_query($connection,$sql))
                     {
                         if ($role == "BLOOD BANK") {
+                            $_SESSION["email"] = $userEmail;
                             header("Location: bloodBankDetail.php");  
                         }
                         else
