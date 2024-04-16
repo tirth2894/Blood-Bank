@@ -64,7 +64,7 @@
     <div class="bg-gray-100 flex justify-center items-center">
         <!-- Form -->
         <div class="sm:px-20 md:w-5/6 p-8 w-full lg:w-1/2">
-            <h1 class="text-2xl font-semibold mb-4 text-red-600">Donate Blood</h1>
+            <h1 class="text-2xl font-semibold mb-4 text-red-600">Details</h1>
             <form action="inquiry.php?req=<?php echo $req?>" method="POST">
                 <!-- Username Input -->
                 <div class="mb-4">

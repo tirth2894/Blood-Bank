@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,12 +10,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blood Bank - Profile</title>
     <link rel="stylesheet" href="public/style.css">
+
 </head>
 
 <body>
     <?php
-        // Navbar
-        require_once("navbar.php");        
+
+        if(isset($_SESSION["name"]))
+        {
+            // Navbar
+            require_once("navbar.php"); 
+            require_once("connection.php");
+
+            $name = $_SESSION["name"];
+            $email = $_SESSION["email"];
+            $role = $_SESSION["role"];
+
+        }
+        else
+        {
+            header("Location: login.php");
+        }
+
     ?>
 
     <div class="flex justify-center">
@@ -25,8 +45,25 @@
                             <img class="h-auto w-full mx-auto" src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
                                 alt="">
                         </div>
-                        <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">Jane Doe</h1>
-                        <h3 class="text-gray-600 font-lg text-semibold leading-6">Donor / Reciver</h3>
+                        <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">
+                            <?php echo ucfirst($name);?>
+                        </h1>
+                        <h3 class="text-gray-600 font-lg text-semibold leading-6">
+                            <?php
+                                if($role == "CONTRIBUTOR")
+                                {
+                                    echo "Contributor";
+                                }
+                                else
+                                {
+                                    echo "Blood Bank";
+                                }
+                            ?>
+                        </h3>
+                        <button class="border-4 border-gray-200 py-1 mt-2 rounded-md w-full">
+                            <a href="logout.php" class="block">Log Out</a>
+                        </button>
+
                     </div>
                     <!-- End of profile card -->
                 </div>
@@ -56,29 +93,48 @@
                             <div class="text-sm ">
                                 <div class="grid grid-cols-2 break-words">
                                     <div class="px-4 py-2 font-semibold">Name</div>
-                                    <div class="px-4 py-2">Jane Doe</div>
+                                    <div class="px-4 py-2">
+                                        <?php echo ucfirst($name);?>
+                                    </div>
                                 </div>
                                 <div class="grid grid-cols-2 break-words">
                                     <div class="px-4 py-2 font-semibold">Email</div>
-                                    <div class="px-4 py-2 ">JaneDoe132@gmail.com</div>
+                                    <div class="px-4 py-2 ">
+                                        <?php echo $email;?>
+                                    </div>
                                 </div>
 
-                                <div class="grid grid-cols-2 break-words">
-                                    <div class="px-4 py-2 font-semibold">City</div>
-                                    <div class="px-4 py-2">Ahmedabad</div>
-                                </div>
-                                <div class="grid grid-cols-2 break-words">
-                                    <div class="px-4 py-2 font-semibold">State</div>
-                                    <div class="px-4 py-2 ">Gujarat</div>
-                                </div>
-                                <div class="grid grid-cols-2 break-words">
-                                    <div class="px-4 py-2 font-semibold">Country</div>
-                                    <div class="px-4 py-2">India</div>
-                                </div>
-                                <div class="grid grid-cols-2 break-words">
-                                    <div class="px-4 py-2 font-semibold">Contact No</div>
-                                    <div class="px-4 py-2 ">9924062681</div>
-                                </div>
+                                <?php
+                                    if ($role == "BLOOD BANK") {
+                                        
+                                        $sql = "SELECT Id FROM user WHERE Email = '$email'";
+                                        $result = mysqli_query($connection,$sql);
+                                        $row = mysqli_fetch_assoc($result);
+
+                                        $sql = "SELECT * FROM banks WHERE Id ='".$row["Id"]."'";
+                                        $result = mysqli_query($connection,$sql);
+                                        $row = mysqli_fetch_assoc($result);
+
+                                        echo '<div class="grid grid-cols-2 break-words">
+                                        <div class="px-4 py-2 font-semibold">City</div>
+                                        <div class="px-4 py-2">'.ucfirst($row['City']).'</div>
+                                    </div>
+                                    <div class="grid grid-cols-2 break-words">
+                                        <div class="px-4 py-2 font-semibold">State</div>
+                                        <div class="px-4 py-2 ">'.ucfirst($row['State']).'</div>
+                                    </div>
+                                    <div class="grid grid-cols-2 break-words">
+                                        <div class="px-4 py-2 font-semibold">Country</div>
+                                        <div class="px-4 py-2">'.ucfirst($row['Country']).'</div>
+                                    </div>
+                                    <div class="grid grid-cols-2 break-words">
+                                        <div class="px-4 py-2 font-semibold">Contact No</div>
+                                        <div class="px-4 py-2 ">'.ucfirst($row['Contact No']).'</div>
+                                    </div>';
+                                    }
+                                ?>
+
+                                
                             </div>
                         </div>
                     </div>
