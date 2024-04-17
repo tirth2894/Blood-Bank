@@ -135,7 +135,7 @@
                 </div>
 
                 <p class="text-red-600 text-sm text-center mb-3"> 
-                        <!-- <?php echo $errMsg; ?>  -->
+                    <?php echo $errMsg; ?> 
                 </p>
 
                 <!-- Sign up Button -->

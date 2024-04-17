@@ -145,51 +145,68 @@
                             $sql = "SELECT * FROM user,banks WHERE user.Id=banks.Id AND City='$city' AND State='$state' AND Country='$country' ORDER BY $blood ";
                             $result = mysqli_query($connection,$sql);
 
-                            while ($row = mysqli_fetch_assoc($result)) {
-                               echo '<tr class="bg-gray-50 hover:bg-gray-100 text-gray-700 ">
-                                    <td class="px-4 py-3">
-                                        <div class="flex items-center text-sm">
-                                            <div class="relative w-8 h-8 mr-3 rounded-full">
-                                                <img class="object-cover w-full h-full rounded-full"
-                                                    src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=200&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
-                                                    alt="" loading="lazy" />
+                            if(mysqli_num_rows($result) < 1)
+                            {
+                                echo '<p class="text-red-600 text-base text-center mb-3"> 
+                                    Sorry, Blood Bank is not found in this city.
+                                </p>';
+                            }
+                            else
+                            {
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                   echo '<tr class="bg-gray-50 hover:bg-gray-100 text-gray-700 ">
+                                        <td class="px-4 py-3">
+                                            <div class="flex items-center text-sm">
+                                                <div class="relative w-8 h-8 mr-3 rounded-full">
+                                                    <img class="object-cover w-full h-full rounded-full"
+                                                        src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=200&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
+                                                        alt="" loading="lazy" />
+                                                </div>
+                                                <div>
+                                                    <p class="font-semibold">'.$row["Name"].'</p>
+                                                </div>
                                             </div>
-                                            <div>
-                                                <p class="font-semibold">'.$row["Name"].'</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="px-4 py-3 text-sm">'.$row["City"].'</td>
-                                    <td class="px-4 py-3 text-sm">'.$row["State"].'</td>
-                                    <td class="px-4 py-3 text-sm">'.$row["Contact No"].'</td>
-                                    <td class="px-4 py-3 text-sm">'.$row["Email"].'</td>   
-                                </tr>';
+                                        </td>
+                                        <td class="px-4 py-3 text-sm">'.$row["City"].'</td>
+                                        <td class="px-4 py-3 text-sm">'.$row["State"].'</td>
+                                        <td class="px-4 py-3 text-sm">'.$row["Contact_No"].'</td>
+                                        <td class="px-4 py-3 text-sm">'.$row["Email"].'</td>   
+                                    </tr>';
+                                }
                             }
                         }
                         else if($req == "lookingForBlood" && $valid)
                         {
                             $sql = "SELECT * FROM user,banks WHERE user.Id=banks.Id AND City='$city' AND State='$state' AND Country='$country' ORDER BY $blood DESC";
                             $result = mysqli_query($connection,$sql);
-
-                            while ($row = mysqli_fetch_assoc($result)) {
-                               echo '<tr class="bg-gray-50 hover:bg-gray-100 text-gray-700 ">
-                                    <td class="px-4 py-3">
-                                        <div class="flex items-center text-sm">
-                                            <div class="relative w-8 h-8 mr-3 rounded-full">
-                                                <img class="object-cover w-full h-full rounded-full"
-                                                    src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=200&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
-                                                    alt="" loading="lazy" />
-                                            </div>
-                                            <div>
-                                                <p class="font-semibold">'.$row["Name"].'</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="px-4 py-3 text-sm">'.$row["City"].'</td>
-                                    <td class="px-4 py-3 text-sm">'.$row["State"].'</td>
-                                    <td class="px-4 py-3 text-sm">'.$row["Contact No"].'</td>   
-                                    <td class="px-4 py-3 text-sm">'.$row["Email"].'</td>   
-                                </tr>';
+                            if(mysqli_num_rows($result) < 1)
+                            {
+                                echo '<p class="text-red-600 text-base text-center mb-3"> 
+                                    Sorry, Blood Bank is not found in this city.
+                                </p>';
+                            }
+                            else
+                            {
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    echo '<tr class="bg-gray-50 hover:bg-gray-100 text-gray-700 ">
+                                            <td class="px-4 py-3">
+                                                <div class="flex items-center text-sm">
+                                                    <div class="relative w-8 h-8 mr-3 rounded-full">
+                                                        <img class="object-cover w-full h-full rounded-full"
+                                                            src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=200&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
+                                                            alt="" loading="lazy" />
+                                                    </div>
+                                                    <div>
+                                                        <p class="font-semibold">'.$row["Name"].'</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="px-4 py-3 text-sm">'.$row["City"].'</td>
+                                            <td class="px-4 py-3 text-sm">'.$row["State"].'</td>
+                                            <td class="px-4 py-3 text-sm">'.$row["Contact_No"].'</td>   
+                                            <td class="px-4 py-3 text-sm">'.$row["Email"].'</td>   
+                                        </tr>';
+                                }
                             }         
                         }
 

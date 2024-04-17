@@ -17,7 +17,9 @@
 <body>
     <?php
         // Navbar
-        require_once("navbar.php");        
+        require_once("navbar.php"); 
+        require_once("connection.php");
+
     ?>
     
     <!-- Slider -->
@@ -46,7 +48,16 @@
             <!-- card body  -->
             <div class="flex flex-col items-start justify-between flex-auto py-8 px-9">
                 <div class="flex flex-col my-7">
-                    <span class="text-secondary-inverse text-4xl tracking-[-0.115rem] font-bold">590k+</span>
+                    <span class="text-secondary-inverse text-4xl tracking-[-0.115rem] font-bold text-center">
+                        <?php
+                            $sql = "SELECT count(*) FROM user WHERE Role = 'BLOOD BANK'";
+                            $result = mysqli_query($connection,$sql);
+
+                            $row = mysqli_fetch_assoc($result);
+
+                            echo $row["count(*)"]."+";
+                        ?>
+                    </span>
                     <p class="font-medium my-2 text-secondary-dark text-2xl">Blood Banks</p>
                 </div>
             </div>
@@ -57,7 +68,16 @@
             <!-- card body  -->
             <div class="flex flex-col items-start justify-between flex-auto py-8 px-9">
                 <div class="flex flex-col my-7">
-                    <span class="text-secondary-inverse text-4xl tracking-[-0.115rem] font-bold">590k+</span>
+                    <span class="text-secondary-inverse text-4xl tracking-[-0.115rem] font-bold text-center">
+                        <?php
+                            $sql = "SELECT count(*) FROM user WHERE Role = 'CONTRIBUTOR'";
+                            $result = mysqli_query($connection,$sql);
+
+                            $row = mysqli_fetch_assoc($result);
+
+                            echo $row["count(*)"]."+";
+                        ?>
+                    </span>
                     <p class="font-medium my-2 text-secondary-dark text-2xl">Contributors</p>
                 </div>
             </div>

@@ -16,7 +16,7 @@
 <body>
     <?php
 
-        if(isset($_SESSION["name"]))
+        if(isset($_SESSION["email"]))
         {
             // Navbar
             require_once("navbar.php"); 
@@ -26,6 +26,13 @@
             $email = $_SESSION["email"];
             $role = $_SESSION["role"];
 
+            $sql = "SELECT * FROM user WHERE Email = '$email'";
+            $result = mysqli_query($connection,$sql);
+
+            $row = mysqli_fetch_assoc($result);
+
+            $_SESSION["name"] = $row["Name"];
+            $name = $_SESSION["name"];
         }
         else
         {
@@ -38,7 +45,7 @@
         <div class="container p-5 w-screen">
             <div class="md:flex justify-center no-wrap ">
                 <!-- Left Side -->
-                <div class="w-full md:w-3/12 md:mx-2 ">
+                <div class="w-full md:w-3/12 md:mx-2 my-2">
                     <!-- Profile Card -->
                     <div class="bg-gray-100 p-3 border-t-4 border-red-600">
                         <div class="image overflow-hidden">
@@ -60,7 +67,12 @@
                                 }
                             ?>
                         </h3>
-                        <button class="border-4 border-gray-200 py-1 mt-2 rounded-md w-full">
+
+                        <button class="border-4 border-gray-200 py-1 mt-2 rounded-md w-full text-gray-600 hover:font-semibold focus:font-semibold">
+                            <a href="changePassword.php" class="block">Change Password</a>
+                        </button>
+                        
+                        <button class="border-4 border-gray-200 py-1 mt-2 rounded-md w-full text-gray-600 hover:font-semibold focus:font-semibold">
                             <a href="logout.php" class="block">Log Out</a>
                         </button>
 
@@ -68,7 +80,7 @@
                     <!-- End of profile card -->
                 </div>
                 <!-- Right Side -->
-                <div class="w-full md:w-9/12 bg-gray-100 border-t-4 border-red-600">
+                <div class="w-full my-2 md:w-9/12 bg-gray-100 border-t-4 border-red-600">
                     <!-- Profile tab -->
                     <!-- About Section -->
                     <div class="p-3 shadow-sm rounded-sm">
@@ -83,11 +95,20 @@
                                 </span>
                                 <span class="tracking-wide ml-1.5">About</span>
                             </div>
-                            <button
-                                class="middle none center rounded-lg bg-red-500 py-2 px-3 font-sans text-xs font-bold uppercase text-white shadow-md disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                                data-ripple-light="true">
-                                <a href="#">Update</a>
-                            </button>
+
+                            <?php
+
+                                if($_SESSION["role"] == "BLOOD BANK")
+                                {
+                                    echo '<button
+                                        class="middle none center rounded-lg bg-red-500 py-2 px-3 font-sans text-xs font-bold uppercase text-white shadow-md disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                        data-ripple-light="true">
+                                        <a href="updateProfile.php">Update</a>
+                                    </button>';
+                                }
+                                
+                            ?>
+                            
                         </div>
                         <div class="text-gray-700 my-2">
                             <div class="text-sm ">
@@ -129,8 +150,46 @@
                                     </div>
                                     <div class="grid grid-cols-2 break-words">
                                         <div class="px-4 py-2 font-semibold">Contact No</div>
-                                        <div class="px-4 py-2 ">'.ucfirst($row['Contact No']).'</div>
-                                    </div>';
+                                        <div class="px-4 py-2 ">'.ucfirst($row['Contact_No']).'</div>
+                                    </div>
+                                   
+                                    <div class="flex items-center space-x-2 text-base m-2 mt-3">
+                                        <span class="tracking-wide ml-1.5 font-semibold text-black">Blood Quantity</span>
+                                    </div>
+                                   
+                                    <div class="grid grid-cols-2 break-words">
+                                        <div class="px-4 py-2 font-semibold">A Positive</div>
+                                        <div class="px-4 py-2 ">'.ucfirst($row['A_positive']).'</div>
+                                    </div>
+                                    <div class="grid grid-cols-2 break-words">
+                                        <div class="px-4 py-2 font-semibold">A Nagative</div>
+                                        <div class="px-4 py-2 ">'.ucfirst($row['A_nagative']).'</div>
+                                    </div>
+                                    <div class="grid grid-cols-2 break-words">
+                                        <div class="px-4 py-2 font-semibold">B Positive</div>
+                                        <div class="px-4 py-2 ">'.ucfirst($row['B_positive']).'</div>
+                                    </div>
+                                    <div class="grid grid-cols-2 break-words">
+                                        <div class="px-4 py-2 font-semibold">B Nagative</div>
+                                        <div class="px-4 py-2 ">'.ucfirst($row['B_nagative']).'</div>
+                                    </div>
+                                    <div class="grid grid-cols-2 break-words">
+                                        <div class="px-4 py-2 font-semibold">O Positive</div>
+                                        <div class="px-4 py-2 ">'.ucfirst($row['O_positive']).'</div>
+                                    </div>
+                                    <div class="grid grid-cols-2 break-words">
+                                        <div class="px-4 py-2 font-semibold">O Nagative</div>
+                                        <div class="px-4 py-2 ">'.ucfirst($row['O_nagative']).'</div>
+                                    </div>
+                                    <div class="grid grid-cols-2 break-words">
+                                        <div class="px-4 py-2 font-semibold">AB Positive</div>
+                                        <div class="px-4 py-2 ">'.ucfirst($row['AB_positive']).'</div>
+                                    </div>
+                                    <div class="grid grid-cols-2 break-words">
+                                        <div class="px-4 py-2 font-semibold">AB Nagative</div>
+                                        <div class="px-4 py-2 ">'.ucfirst($row['AB_nagative']).'</div>
+                                    </div>
+                                    ';
                                     }
                                 ?>
 
