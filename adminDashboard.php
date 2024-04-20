@@ -11,6 +11,16 @@
 <body>
     <?php
         require_once("connection.php");
+
+        if (isset($_REQUEST["Id"])) {
+            $id = base64_decode($_REQUEST["Id"]);
+
+            $sql = "DELETE FROM user WHERE Id = $id";
+            if(mysqli_query($connection,$sql))
+            {
+                header("Location: adminDashboard.php");
+            }
+        }
     ?>
 
     <!-- component -->
@@ -143,7 +153,7 @@
                                 <tbody class="bg-white divide-y dark:divide-gray-700 ">
                         
                                     <?php
-                                        $sql = "SELECT * FROM user WHERE Role = 'CONTRIBUTOR'";
+                                        $sql = "SELECT * FROM user WHERE Role = 'CONTRIBUTOR' ORDER BY Name";
                                         $result = mysqli_query($connection,$sql);
 
                                         while ($row = mysqli_fetch_assoc($result)) {
@@ -166,12 +176,7 @@
                                                 <button
                                                     class="rounded-lg bg-red-500 w-20 my-0.5 text-center focus:bg-red-600 hover:bg-red-600 py-2 font-sans text-sm font-bold text-white "
                                                     data-ripple-light="true">
-                                                    <a href="#">Delete</a>
-                                                </button>
-                                                <button
-                                                    class="rounded-lg bg-red-500 w-20 my-0.5 text-center focus:bg-red-600 hover:bg-red-600 py-2 font-sans text-sm font-bold text-white "
-                                                    data-ripple-light="true">
-                                                    <a href="#">Update</a>
+                                                    <a href="adminDashboard.php?Id='.base64_encode($row["Id"]).'">Delete</a>
                                                 </button>
                                             </td>
                                         </tr>';
@@ -193,8 +198,9 @@
                                 <thead>
                                     <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50  ">
                                         <th class="px-4 py-3">Name</th>
-                                        <th class="px-4 py-3">Location</th>
+                                        <th class="px-4 py-3">Email</th>
                                         <th class="px-4 py-3">Contact no</th>
+                                        <th class="px-4 py-3">Location</th>
                                         <th class="px-4 py-3">Date - Time</th>
                                         <th class="px-4 py-3">Actions</th>
                                     </tr>
@@ -202,7 +208,7 @@
                                 <tbody class="bg-white divide-y dark:divide-gray-700 ">
                                     
                                 <?php
-                                    $sql = "SELECT * FROM user,banks WHERE user.Id = banks.Id AND user.Role = 'BLOOD BANK'";
+                                    $sql = "SELECT * FROM user,banks WHERE user.Id = banks.Id AND user.Role = 'BLOOD BANK' ORDER BY Name";
                                     $result = mysqli_query($connection,$sql);
                                 
                                     while ($row = mysqli_fetch_assoc($result)) {
@@ -220,19 +226,15 @@
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="px-4 py-3 text-sm">'.ucfirst($row["City"]).', '.ucfirst($row["State"]).'</td>
+                                        <td class="px-4 py-3 text-sm">'.$row["Email"].'</td>
                                         <td class="px-4 py-3 text-sm">'.$row["Contact_No"].'</td>
+                                        <td class="px-4 py-3 text-sm">'.ucfirst($row["City"]).', '.ucfirst($row["State"]).', '.ucfirst($row["Country"]).'</td>
                                         <td class="px-4 py-3 text-sm">'.$row["Timestamp"].'</td>
                                         <td class="px-4 py-3 text-xs">
                                             <button
                                                 class="rounded-lg bg-red-500 w-20 my-0.5 text-center focus:bg-red-600 hover:bg-red-600 py-2 font-sans text-sm font-bold text-white "
                                                 data-ripple-light="true">
-                                                <a href="#">Delete</a>
-                                            </button>
-                                            <button
-                                                class="rounded-lg bg-red-500 w-20 my-0.5 text-center focus:bg-red-600 hover:bg-red-600 py-2 font-sans text-sm font-bold text-white "
-                                                data-ripple-light="true">
-                                                <a href="#">Update</a>
+                                                <a href="adminDashboard.php?Id='.base64_encode($row["Id"]).'">Delete</a>
                                             </button>
                                         </td>
                                 </tr>';
