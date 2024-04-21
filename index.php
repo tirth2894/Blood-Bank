@@ -79,19 +79,11 @@
             </div>
             <!-- end card body  -->
         </div>
-        <!-- <div class="relative my-4 bg-[#f52727] text-white flex flex-col w-56 break-words bg-clip-border rounded-2xl draggable shadow-lg shadow-slate-600 hover:shadow-xl hover:bg-red-600 hover:shadow-slate-600 transition-shadow"
-            draggable="true">
-            <div class="flex flex-col items-start justify-between flex-auto py-8 px-9">
-                <div class="flex flex-col my-7">
-                    <span class="text-secondary-inverse text-4xl tracking-[-0.115rem] font-bold">590k+</span>
-                    <p class="font-medium my-2 text-secondary-dark text-2xl">Recievers</p>
-                </div>
-            </div>
-        </div> -->
+        
     </div>
 
     <!-- Compatible Blood -->
-    <div class="flex items-center justify-between flex-col">
+    <div class="flex items-center justify-between flex-col mb-10">
         <h2 class="font-semibold my-5 text-secondary-dark text-red-600 text-3xl text-center">Compatible Blood</h2>
         <div class="overflow-x-auto mt-3 mx-1 bg-red-600 rounded-3xl">
             <table class="min-w-full text-base bg-red-600 text-white">

@@ -212,25 +212,6 @@
 
                         
                     ?>
-                    
-                    
-                    <!-- <tr class="bg-gray-50 hover:bg-gray-100 text-gray-700 ">
-                            <td class="px-4 py-3">
-                                <div class="flex items-center text-sm">
-                                    <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                                        <img class="object-cover w-full h-full rounded-full"
-                                            src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=200&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
-                                            alt="" loading="lazy" />
-                                    </div>
-                                    <div>
-                                        <p class="font-semibold">Tirth Patel</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="px-4 py-3 text-sm">Ahmedabad</td>
-                            <td class="px-4 py-3 text-sm">Gujarat</td>
-                            <td class="px-4 py-3 text-sm">9924062681</td>   
-                    </tr> -->
                         
                     </tbody>
                 </table>

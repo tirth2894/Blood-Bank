@@ -31,10 +31,9 @@
                 <li><a class="text-white text-xl hover:text-red-200" href="aboutUs.php">About Us</a></li>
                 <li>
                     <a href="userProfile.php">
-                        <img class="h-8 p-1 border-solid border-white border-2 rounded-full" src="images/user.png"
+                        <img class="h-10 p-1 border-solid border-white border-2 rounded-full" src="images/user.png"
                             alt="">
                     </a>
-                    <!-- <button class="border-2 px-2 py-0.5 rounded-lg text-xl border-solid border-white text-white">Login</button> -->
                 </li>
             </ul>
         </nav>
@@ -42,12 +41,11 @@
             <div class="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>
             <nav
                 class="fixed top-0 left-0 bottom-0 flex flex-col w-4/6 max-w-sm py-6 px-6 bg-red-600 border-r overflow-y-auto">
-                <div class="flex items-center justify-center mb-8">
-                    <a href="userProfile.php" class="mr-auto text-3xl font-bold leading-none">
+                <div class="flex items-center justify-center mb-5">
+                    <a href="userProfile.php" class="mr-auto text-3xl font-bold leading-none mt-5">
                         <img class="h-10 p-1 border-solid border-white border-2 rounded-full" src="images/user.png"
                             alt="">
                     </a>
-                    <!-- <button class="mr-auto font-bold leading-none border-2 p-2 rounded-lg text-lg border-solid border-white text-white">Login</button> -->
                     <button class="navbar-close">
                         <svg class="h-6 w-6 text-white cursor-pointer hover:text-gray-500"
                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">

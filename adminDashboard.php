@@ -28,7 +28,8 @@
         <div class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-white text-black">
 
             <!-- Sidebar -->
-            <div class="fixed flex flex-col h-full w-14 hover:w-64 md:w-64 bg-red-600 text-white transition-all duration-300 border-none z-10 sidebar">
+            <div
+                class="fixed flex flex-col h-full w-14 hover:w-64 md:w-64 bg-red-600 text-white transition-all duration-300 border-none z-10 sidebar">
                 <div class="overflow-y-auto overflow-x-hidden flex flex-col justify-between flex-grow">
                     <ul class="flex flex-col py-4 space-y-1">
                         <li class="px-5 hidden md:block">
@@ -84,7 +85,8 @@
 
             <div class="h-full ml-14 mb-10 md:ml-64">
                 <div class="grid grid-cols-1 sm:grid-cols-2 p-4 gap-2">
-                    <div class="bg-red-500 shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-red-700 text-white font-medium group">
+                    <div
+                        class="bg-red-500 shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-red-700 text-white font-medium group">
                         <div
                             class="flex justify-center items-center w-14 h-14 bg-white rounded-full transition-all duration-300 transform group-hover:rotate-12">
                             <svg width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="currentColor"
@@ -101,15 +103,16 @@
                                     $result = mysqli_query($connection,$sql);
 
                                     $row = mysqli_fetch_assoc($result);
-
-                                    echo $row["count(*)"];
+                                    $totalContributors = $row["count(*)"];
+                                    echo $totalContributors;
                                 ?>
 
                             </p>
                             <p>Contributors</p>
                         </div>
                     </div>
-                    <div class="bg-red-500 shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-red-700 text-white font-medium group">
+                    <div
+                        class="bg-red-500 shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-red-700 text-white font-medium group">
                         <div
                             class="flex justify-center items-center w-14 h-14 bg-white rounded-full transition-all duration-300 transform group-hover:rotate-12">
                             <svg width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="currentColor"
@@ -127,7 +130,8 @@
 
                                     $row = mysqli_fetch_assoc($result);
 
-                                    echo $row["count(*)"];
+                                    $totalBloodBank = $row["count(*)"];
+                                    echo $totalBloodBank;
                                 ?>
                             </p>
                             <p>Blood Banks</p>
@@ -138,12 +142,14 @@
 
                 <!-- Contributors -->
                 <div class="mt-4 mx-4">
-                    <h2 id="Contributor" class="font-semibold my-5 text-secondary-dark text-red-600 text-xl">Contributors</h2>
+                    <h2 id="Contributor" class="font-semibold my-5 text-secondary-dark text-red-600 text-xl">
+                        Contributors</h2>
                     <div class="w-full overflow-hidden rounded-lg shadow-xs">
                         <div class="w-full overflow-x-auto">
                             <table class="w-full">
                                 <thead>
-                                    <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50  ">
+                                    <tr
+                                        class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50  ">
                                         <th class="px-4 py-3">Name</th>
                                         <th class="px-4 py-3">Email</th>
                                         <th class="px-4 py-3">Date - Time</th>
@@ -151,9 +157,18 @@
                                     </tr>
                                 </thead>
                                 <tbody class="bg-white divide-y dark:divide-gray-700 ">
-                        
+
                                     <?php
-                                        $sql = "SELECT * FROM user WHERE Role = 'CONTRIBUTOR' ORDER BY Name";
+                                        $limit = 5;
+                                        if(isset($_REQUEST["contributorPage"]))
+                                        {
+                                            $start = $_REQUEST["contributorPage"] * $limit;
+                                            $start -= $limit;
+                                        }
+                                        else{
+                                            $start = 0;
+                                        }
+                                        $sql = "SELECT * FROM user WHERE Role = 'CONTRIBUTOR' ORDER BY Name LIMIT $start,$limit";
                                         $result = mysqli_query($connection,$sql);
 
                                         while ($row = mysqli_fetch_assoc($result)) {
@@ -186,17 +201,36 @@
                                 </tbody>
                             </table>
                         </div>
-                         </div>
+
+                        <!-- component -->
+                        <div class="flex justify-end mr-3 mt-2">
+                            <nav aria-label="Page navigation example">
+                                
+                                <ul class="flex list-style-none">
+                                    <?php
+                                        $n = ceil($totalContributors/$limit);
+                                        for ($i=1; $i <= $n; $i++) { 
+                                            echo '<li class="page-item"><a
+                                            class="page-link relative block py-1.5 px-3 border-0 bg-transparent outline-none transition-all duration-300 rounded text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none"
+                                            href="adminDashboard.php?contributorPage='.$i.'">'.$i.'</a></li>';
+                                        }
+                                    ?>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
                 </div>
-                
+
                 <!-- BLOOD BANKS -->
                 <div class="mt-4 mx-4">
-                    <h2 id="BloodBank" class="font-semibold my-5 text-secondary-dark text-red-600 text-xl">Blood Banks</h2>
+                    <h2 id="BloodBank" class="font-semibold my-5 text-secondary-dark text-red-600 text-xl">Blood Banks
+                    </h2>
                     <div class="w-full overflow-hidden rounded-lg shadow-xs">
                         <div class="w-full overflow-x-auto">
                             <table class="w-full">
                                 <thead>
-                                    <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50  ">
+                                    <tr 
+                                        class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50  ">
                                         <th class="px-4 py-3">Name</th>
                                         <th class="px-4 py-3">Email</th>
                                         <th class="px-4 py-3">Contact no</th>
@@ -206,9 +240,17 @@
                                     </tr>
                                 </thead>
                                 <tbody class="bg-white divide-y dark:divide-gray-700 ">
-                                    
-                                <?php
-                                    $sql = "SELECT * FROM user,banks WHERE user.Id = banks.Id AND user.Role = 'BLOOD BANK' ORDER BY Name";
+
+                                    <?php
+                                    if(isset($_REQUEST["bloodBankPage"]))
+                                    {
+                                        $start = $_REQUEST["bloodBankPage"] * $limit;
+                                        $start -= $limit;
+                                    }
+                                    else{
+                                        $start = 0;
+                                    }
+                                    $sql = "SELECT * FROM user,banks WHERE user.Id = banks.Id AND user.Role = 'BLOOD BANK' ORDER BY Name LIMIT $start,$limit";
                                     $result = mysqli_query($connection,$sql);
                                 
                                     while ($row = mysqli_fetch_assoc($result)) {
@@ -241,13 +283,28 @@
 
                                     }
                                 ?>
-                                        
-                                
-                                    
+
+
+
                                 </tbody>
                             </table>
                         </div>
-                         </div>
+                        <div class="flex justify-end mr-3 mt-2">
+                            <nav aria-label="Page navigation example">
+                                <ul class="flex list-style-none">
+
+                                    <?php
+                                        $n = ceil($totalBloodBank/$limit) ;
+                                        for ($i=1; $i <= $n; $i++) { 
+                                            echo '<li class="page-item"><a
+                                            class="page-link relative block py-1.5 px-3 border-0 bg-transparent outline-none transition-all duration-300 rounded text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none"
+                                            href="adminDashboard.php?bloodBankPage='.$i.'">'.$i.'</a></li>';
+                                        }
+                                    ?>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
