@@ -52,7 +52,13 @@
                                 $_SESSION["email"] = $row["Email"];
                                 $_SESSION["role"] = $row["Role"];
 
-                                header("Location: index.php");
+                                if ($_SESSION["role"] == "ADMIN") {
+                                    header("Location: adminDashboard.php");
+                                }
+                                else
+                                {
+                                    header("Location: index.php");
+                                }
                             }
                             else{
                                 $passErrMsg = "Password doesn't match";

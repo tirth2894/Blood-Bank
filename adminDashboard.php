@@ -29,12 +29,12 @@
 
             <!-- Sidebar -->
             <div
-                class="fixed flex flex-col h-full w-14 hover:w-64 md:w-64 bg-red-600 text-white transition-all duration-300 border-none z-10 sidebar">
+                class="fixed flex flex-col h-full w-14 hover:w-60 md:w-60 bg-red-600 text-white transition-all duration-300 border-none z-10 sidebar">
                 <div class="overflow-y-auto overflow-x-hidden flex flex-col justify-between flex-grow">
                     <ul class="flex flex-col py-4 space-y-1">
                         <li class="px-5 hidden md:block">
                             <div class="flex flex-row items-center h-8">
-                                <div class="text-sm font-bold tracking-wide text-white uppercase">Main</div>
+                                <div class="text-sm font-bold tracking-wide text-white uppercase">Admin Dashboard</div>
                             </div>
                         </li>
                         <li>
@@ -51,16 +51,13 @@
                                 <span class="ml-2 text-sm tracking-wide truncate">Home</span>
                             </a>
                         </li>
+
+
                         <li>
                             <a href="#BloodBank"
-                                class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-red-500 focus:bg-red-500 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-red-300 focus:border-red-300 pr-6">
+                                class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-red-700 focus:bg-red-500 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-red-300 focus:border-red-300 pr-6">
                                 <span class="inline-flex justify-center items-center ml-4">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4">
-                                        </path>
-                                    </svg>
+                                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="Navigation / Building_04"> <path id="Vector" d="M2 20H4M4 20H14M4 20V6.2002C4 5.08009 4 4.51962 4.21799 4.0918C4.40973 3.71547 4.71547 3.40973 5.0918 3.21799C5.51962 3 6.08009 3 7.2002 3H10.8002C11.9203 3 12.4796 3 12.9074 3.21799C13.2837 3.40973 13.5905 3.71547 13.7822 4.0918C14 4.5192 14 5.07899 14 6.19691V12M14 20H20M14 20V12M20 20H22M20 20V12C20 11.0681 19.9999 10.6024 19.8477 10.2349C19.6447 9.74481 19.2557 9.35523 18.7656 9.15224C18.3981 9 17.9316 9 16.9997 9C16.0679 9 15.6019 9 15.2344 9.15224C14.7443 9.35523 14.3552 9.74481 14.1522 10.2349C14 10.6024 14 11.0681 14 12M7 10H11M7 7H11" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g> </g></svg>
                                 </span>
                                 <span class="ml-2 text-sm tracking-wide truncate">Blood Banks</span>
                             </a>
@@ -69,10 +66,10 @@
                             <a href="#Contributor"
                                 class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-red-500 focus:bg-red-500 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-red-300 focus:border-red-300 pr-6">
                                 <span class="inline-flex justify-center items-center ml-4">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                        xmlns="http://www.w3.org/2000/svg">
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                        class="stroke-current text-red-600  transform transition-transform duration-500 ease-in-out">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z">
+                                            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
                                         </path>
                                     </svg>
                                 </span>
@@ -83,7 +80,7 @@
                 </div>
             </div>
 
-            <div class="h-full ml-14 mb-10 md:ml-64">
+            <div class="h-full ml-14 mb-10 md:ml-60">
                 <div class="grid grid-cols-1 sm:grid-cols-2 p-4 gap-2">
                     <div
                         class="bg-red-500 shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-red-700 text-white font-medium group">
@@ -112,15 +109,10 @@
                         </div>
                     </div>
                     <div
-                        class="bg-red-500 shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-red-700 text-white font-medium group">
+                        class="bg-red-500 shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-red-500 text-white font-medium group">
                         <div
                             class="flex justify-center items-center w-14 h-14 bg-white rounded-full transition-all duration-300 transform group-hover:rotate-12">
-                            <svg width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                                class="stroke-current text-red-600  transform transition-transform duration-500 ease-in-out">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
-                                </path>
-                            </svg>
+                            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="Navigation / Building_04"> <path id="Vector" d="M2 20H4M4 20H14M4 20V6.2002C4 5.08009 4 4.51962 4.21799 4.0918C4.40973 3.71547 4.71547 3.40973 5.0918 3.21799C5.51962 3 6.08009 3 7.2002 3H10.8002C11.9203 3 12.4796 3 12.9074 3.21799C13.2837 3.40973 13.5905 3.71547 13.7822 4.0918C14 4.5192 14 5.07899 14 6.19691V12M14 20H20M14 20V12M20 20H22M20 20V12C20 11.0681 19.9999 10.6024 19.8477 10.2349C19.6447 9.74481 19.2557 9.35523 18.7656 9.15224C18.3981 9 17.9316 9 16.9997 9C16.0679 9 15.6019 9 15.2344 9.15224C14.7443 9.35523 14.3552 9.74481 14.1522 10.2349C14 10.6024 14 11.0681 14 12M7 10H11M7 7H11" stroke="#ef1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g> </g></svg>
                         </div>
                         <div class="text-right">
                             <p class="text-2xl">

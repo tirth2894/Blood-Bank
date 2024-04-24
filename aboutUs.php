@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,8 +14,16 @@
 
 <body>
     <?php
-        // Navbar
-        require_once("navbar.php");        
+        if(isset($_SESSION["email"]))
+        {
+            // Navbar
+            require_once("navbar.php");        
+        }
+        else
+        {
+            header("Location:login.php");
+        }
+
     ?>
 
     <section class="bg-gray-100 py-14 pb-0">
@@ -39,15 +51,11 @@
                 </p>
                 <div class="mt-8">
                     <p class="text-lg font-bold">Email:</p>
-                    <p class="text-gray-700">contact@homotrack.com</p>
+                    <p class="text-gray-700">tirthptl2894@gmail.com</p>
                 </div>
                 <div class="mt-4">
                     <p class="text-lg font-bold">Phone:</p>
                     <p class="text-gray-700">+91 9924062681</p>
-                </div>
-                <div class="mt-4">
-                    <p class="text-lg font-bold">Address:</p>
-                    <p class="text-gray-700">123 Main Street, Ahmedabad, India, 382330</p>
                 </div>
             </div>
         </div>

@@ -148,7 +148,7 @@
                             if(mysqli_num_rows($result) < 1)
                             {
                                 echo '<p class="text-red-600 text-base text-center mb-3"> 
-                                    Sorry, Blood Bank is not found in this city.
+                                    Sorry, Blood Bank is not found in your city.
                                 </p>';
                             }
                             else
@@ -219,6 +219,10 @@
         </div>
     </div>
 
+    <?php
+        // Footer
+        require_once("footer.php")
+    ?>
     
 </body>
 
