@@ -29,10 +29,17 @@
                 {
                     $pattern = "/^^[A-Za-z]+$/i";
                     
-                    $blood = $_POST["bloodGroup"];
-                    $city = $_POST["city"];
-                    $state = $_POST["state"];
-                    $country = $_POST["country"];
+                    $blood = ltrim($_POST["bloodGroup"]);
+                    $blood = rtrim($blood);
+
+                    $city = ltrim($_POST["city"]);
+                    $city = rtrim($city);
+                    
+                    $state = ltrim($_POST["state"]);
+                    $state = rtrim($state);
+                    
+                    $country = ltrim($_POST["country"]);
+                    $country = rtrim($country);
 
                     if(strlen($city) < 1 || !(preg_match($pattern,$city)))
                     {

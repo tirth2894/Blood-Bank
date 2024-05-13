@@ -52,13 +52,8 @@
                                 $_SESSION["email"] = $row["Email"];
                                 $_SESSION["role"] = $row["Role"];
 
-                                if ($_SESSION["role"] == "ADMIN") {
-                                    header("Location: adminDashboard.php");
-                                }
-                                else
-                                {
-                                    header("Location: index.php");
-                                }
+                                header("Location: index.php");
+                                
                             }
                             else{
                                 $passErrMsg = "Password doesn't match";
@@ -84,7 +79,7 @@
             <img src="images/background.png" alt="Placeholder Image" class="object-cover w-full h-full">
         </div>
         <!-- Right: Login Form -->
-        <div class="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2">
+        <div class="lg:p-36 md:p-52 sm:20 p-8 h-full w-full lg:w-1/2">
             <h1 class="text-2xl font-semibold mb-4 text-red-600">Login</h1>
             <form action="login.php" method="POST">
                 <!-- Username Input -->
@@ -106,10 +101,6 @@
                     <span class="text-red-600 text-sm"> 
                         <?php echo $passErrMsg; ?> 
                     </span>
-                </div>
-                <!-- Forgot Password Link -->
-                <div class="mb-6 text-red-600">
-                    <a href="#" class="hover:underline">Forgot Password?</a>
                 </div>
 
                 <p class="text-red-600 text-sm text-center mb-3"> 
